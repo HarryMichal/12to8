@@ -12,10 +12,9 @@ endif
 	./tests/${TEST}.sh
 
 build:
-	go get -u github.com/golang/dep/cmd/dep
-	dep ensure
 ifeq (latest,${VERSION})
-	dep ensure -update
+	go get -u
+	go mod tidy
 	git diff
 endif
 	go build
