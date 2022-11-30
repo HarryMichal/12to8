@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
-exec_subpackages(){
-    find . -maxdepth 1 -mindepth 1 \! -name tests \! -name vendor -type d -print -exec $* ';'
-}
+SUBDIRS=("api" "cmd" "helpers")
 
-exec_subpackages go test -v '{}/...'
+for dir in "${SUBDIRS[@]}"; do
+    go test -v "./${dir}/..."
+done
