@@ -10,6 +10,7 @@ require (
 )
 
 require (
+	github.com/deepmap/oapi-codegen v1.12.3 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
