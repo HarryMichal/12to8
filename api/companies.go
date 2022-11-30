@@ -36,7 +36,7 @@ type CompaniesList struct {
 }
 
 func (cs *CompaniesList) apiURL() string {
-	return "v1/companies"
+	return "v2/companies"
 }
 
 // Slug is used to represent the model in cli
@@ -75,7 +75,7 @@ func (cs *CompaniesList) PorcelainPrettyPrint() {
 // Get returns the Company from the server
 func (c *Company) Get(client Client) error {
 	cs := &CompaniesList{}
-	resp, err := client.GetRequest(fmt.Sprintf("%s/v1/companies/?name=%s", client.Endpoint, c.Name))
+	resp, err := client.GetRequest(fmt.Sprintf("%s/v2/companies/?name=%s", client.Endpoint, c.Name))
 	if err != nil {
 		return err
 	}
@@ -96,7 +96,7 @@ func (c *Company) Slug() string {
 }
 
 func (c *Company) apiURL() string {
-	return "v1/companies"
+	return "v2/companies"
 }
 
 // SetID sets the ID of a company
@@ -121,7 +121,7 @@ func (c *Company) DeleteArg() string {
 
 // GetByID returns the Company from the server
 func (c *Company) GetByID(client Client) error {
-	resp, err := client.GetRequest(fmt.Sprintf("%s/v1/companies/%d/", client.Endpoint, c.ID))
+	resp, err := client.GetRequest(fmt.Sprintf("%s/v2/companies/%d/", client.Endpoint, c.ID))
 
 	if err != nil {
 		return err

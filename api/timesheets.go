@@ -50,7 +50,7 @@ func (ts *TimesheetsList) GetByID(id int) *Timesheet {
 
 // New creates a new timesheet on the server
 func (t *Timesheet) New(c Client) error {
-	resp, err := c.PostRequest(fmt.Sprintf("%s/v1/my_timesheets/", c.Endpoint), t)
+	resp, err := c.PostRequest(fmt.Sprintf("%s/v2/timesheets/", c.Endpoint), t)
 	if err != nil {
 		return err
 	}
@@ -62,11 +62,11 @@ func (t *Timesheet) New(c Client) error {
 }
 
 func (ts *TimesheetsList) apiURL() string {
-	return "v1/my_timesheets"
+	return "v2/timesheets"
 }
 
 func (t *Timesheet) apiURL() string {
-	return "v1/my_timesheets"
+	return "v2/timesheets"
 }
 
 // Slug is used to represent the model in cli
@@ -105,7 +105,7 @@ func (ts *TimesheetsList) isEmpty() bool {
 // Get returns the timesheets from the server
 func (t *Timesheet) Get(c Client) error {
 	ts := &TimesheetsList{}
-	resp, err := c.GetRequest(fmt.Sprintf("%s/v1/my_timesheets/?year=%d&month=%d", c.Endpoint, t.Year, t.Month))
+	resp, err := c.GetRequest(fmt.Sprintf("%s/v2/timesheets/?year=%d&month=%d", c.Endpoint, t.Year, t.Month))
 	if err != nil {
 		return err
 	}
@@ -122,7 +122,7 @@ func (t *Timesheet) Get(c Client) error {
 
 // GetByID returns the timesheet from the server by its id
 func (t *Timesheet) GetByID(c Client) error {
-	resp, err := c.GetRequest(fmt.Sprintf("%s/v1/my_timesheets/%d/", c.Endpoint, t.ID))
+	resp, err := c.GetRequest(fmt.Sprintf("%s/v2/timesheets/%d/", c.Endpoint, t.ID))
 	if err != nil {
 		return err
 	}
@@ -139,7 +139,7 @@ func (t *Timesheet) Release(c Client) error {
 		return errors.New("No ID for this timesheet")
 	}
 	t.Status = "PENDING"
-	resp, err := c.PatchRequest(fmt.Sprintf("%s/v1/my_timesheets/%d/", c.Endpoint, t.ID), t)
+	resp, err := c.PatchRequest(fmt.Sprintf("%s/v2/timesheets/%d/", c.Endpoint, t.ID), t)
 	if err != nil {
 		return err
 	}

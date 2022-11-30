@@ -55,7 +55,7 @@ func (u *User) Slug() string {
 }
 
 func (u *User) apiURL() string {
-	return "v1/users"
+	return "v2/users"
 }
 
 // SetID sets the ID of a user
@@ -79,7 +79,7 @@ func (u *User) Augment(c *Client) {
 }
 
 func (users *UsersList) apiURL() string {
-	return "v1/users"
+	return "v2/users"
 }
 
 func (users *UsersList) augment(c *Client) error {

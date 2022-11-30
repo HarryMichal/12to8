@@ -36,11 +36,11 @@ type ContractsList struct {
 }
 
 func (cs *ContractsList) apiURL() string {
-	return "v1/my_contracts"
+	return "v2/contracts"
 }
 
 func (c *Contract) apiURL() string {
-	return "v1/my_contracts"
+	return "v2/contracts"
 }
 
 // Slug is used to represent the model in cli

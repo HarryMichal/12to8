@@ -78,11 +78,11 @@ type PerformancesList struct {
 }
 
 func (ps *PerformancesList) apiURL() string {
-	return "v1/my_performances"
+	return "v2/performances"
 }
 
 func (p *Performance) apiURL() string {
-	return "v1/my_performances"
+	return "v2/performances"
 }
 
 func (ps *PerformancesList) augment(c *Client) error {
@@ -147,7 +147,7 @@ func (p *Performance) Augment(c *Client) {
 
 // New creates a new performance on the server
 func (p *Performance) New(c Client) error {
-	resp, err := c.PostRequest(fmt.Sprintf("%s/v1/my_performances/%s/", c.Endpoint, p.Type.String()), p)
+	resp, err := c.PostRequest(fmt.Sprintf("%s/v2/performances/%s/", c.Endpoint, p.Type.String()), p)
 	if err != nil {
 		return err
 	}
@@ -160,7 +160,7 @@ func (p *Performance) New(c Client) error {
 
 // GetByID gets the performance from the server given its it
 func (p *Performance) GetByID(c Client) error {
-	resp, err := c.GetRequest(fmt.Sprintf("%s/v1/my_performances/%s/%d/", c.Endpoint, p.Type.String(), p.ID))
+	resp, err := c.GetRequest(fmt.Sprintf("%s/v2/performances/%s/%d/", c.Endpoint, p.Type.String(), p.ID))
 	if err != nil {
 		return err
 	}
